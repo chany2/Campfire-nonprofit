@@ -51,13 +51,19 @@ try
 
     // Dump the results to standard output
 
+    $results = array_splice($results, 0, 1);
+    $results = $results["links"];
 
-   // echo $results["links"][0]["expanded"]["thumbnail_url"];
+    $max = sizeOf($results);
+    for ($i=0; $i<$max; $i++) {
+        print_r($results[$i]["expanded"]["title"]);
+        print_r("\r\n");
+        print_r($results[$i]["expanded"]["url"]);
+        print_r("\r\n");
+        print_r($results[$i]["expanded"]["thumbnail_url"]);
+        print_r("\r\n\r\n");
+    }
 
-    $out = array_values($results);
-    print_r(json_encode($out);
-
-    // print_r($results)[0];
 } catch (Exception $e)
 {
     echo "Error: " . $e->getMessage() . PHP_EOL;
